@@ -519,7 +519,7 @@ class IPSet(Rule):
             ip_address = ipaddress.ip_address(ip_address)
             unique_id = ip_uid_manager.get_unique_id(ip_address)
             self.unique_ids[unique_id] = ip_address
-        return unique_ids.keys()
+        return self.unique_ids.keys()
 
     def create(self, unique_id, ip_address):
         if unique_id in self.unique_ids:
