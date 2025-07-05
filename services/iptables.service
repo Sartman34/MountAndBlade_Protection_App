@@ -6,7 +6,7 @@ After=network.target
 Type=oneshot
 ExecStart=__REPO_DIR__/scripts/iptables.sh
 RemainAfterExit=true
-User=root
+User=__USER__
 
 [Install]
 WantedBy=multi-user.target
