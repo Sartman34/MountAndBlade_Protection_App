@@ -19,6 +19,14 @@ from watchdog.events import FileSystemEventHandler
 from modules.directories import directories
 import modules.admin as admin
 
+# Force getaddrinfo to only return IPv4 results
+_original_getaddrinfo = socket.getaddrinfo
+
+def ipv4_only_getaddrinfo(*args, **kwargs):
+    return [info for info in _original_getaddrinfo(*args, **kwargs) if info[0] == socket.AF_INET]
+
+socket.getaddrinfo = ipv4_only_getaddrinfo
+
 eval_string = ""
 
 def print_(*string, sep = " ", end = "\n", flush = False):
