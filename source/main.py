@@ -936,7 +936,7 @@ def cloudflare_communicator():
                     stdout = subprocess.PIPE,
                 )
             # Reuse the same connection for keep-alive
-            conn = http.client.HTTPConnection(host, configs["cloudflare"]["port"], timeout=5)
+            conn = http.client.HTTPConnection(configs["cloudflare"]["hostname"], configs["cloudflare"]["port"], timeout=5)
 
             # Step 1: Forward ping request
             ping_path = f"/handlerservers.ashx?type=ping&keys"
